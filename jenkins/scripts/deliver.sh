@@ -5,6 +5,9 @@ echo 'into the local Maven repository, which will ultimately be stored in'
 echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
 echo 'volume).'
 set -x
+export MAVEN_HOME=/var/jenkins_home/apache-maven/apache-maven-3.8.1
+export PATH=$PATH:$MAVEN_HOME/bin
+mvn --version
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 set +x
 
